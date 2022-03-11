@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: component-123
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: component-123
+    app.kubernetes.io/part-of: my-big-application
+  name: component-123
+  namespace: scott
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: component-123
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: component-123
+    spec:
+      containers:
+      - image: docker.io/sbose78/foobar:dev-code-with-quarkus
+        imagePullPolicy: Always
+        name: container-image
+        resources: {}
+status: {}
